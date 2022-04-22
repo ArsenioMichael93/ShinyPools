@@ -10,4 +10,6 @@ public interface ProductDAO extends JpaRepository<Product, Long> {
 
     public Product findById(@Param("id") Integer id);
 
+    public Product findByName(@Param("productName") String productName);
+
 }

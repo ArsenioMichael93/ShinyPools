@@ -12,3 +12,36 @@ body{
     font-size: 100px;
     font-family: "Rage Italic";
 }
+#test{
+    height: 800px;
+    margin-top: 50px;
+    background: url("../img/poolBackground.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    justify-self: center;
+    align-self: center;
+    font-weight: bolder;
+}
+#test2 {
+    padding-bottom: 100px;
+    padding-left: 550px;
+    padding-right: 12px;
+    padding-top: 250px;
+
+}
+#test3 {
+    padding-bottom: 100px;
+    padding-left: 250px;
+    padding-right: 12px;
+    padding-top: 250px;
+
+}
+#test4 {
+    padding-bottom: 100px;
+    padding-left: 550px;
+    padding-right: 12px;
+    padding-top: 50px;
+
+}

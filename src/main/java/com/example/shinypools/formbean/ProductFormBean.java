@@ -9,7 +9,7 @@ import javax.validation.constraints.NotEmpty;
 @Getter
 @Setter
 @ToString
-public class ConversationFormBean {
+public class ProductFormBean {
 
     @NotEmpty(message="product must not be empty")
     private String productName;

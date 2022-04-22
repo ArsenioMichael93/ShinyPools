@@ -7,33 +7,45 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import com.example.shinypools.database.dao.ProductDAO;
 import com.example.shinypools.database.entity.Product;
-import com.example.shinypools.formbean.ConversationFormBean;
+import com.example.shinypools.formbean.ProductFormBean;
 
 import javax.validation.Valid;
 import javax.websocket.server.PathParam;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 @Slf4j
 @Controller
-public class ConversationController {
+public class ProductController {
 
     @Autowired
     private ProductDAO productDao;
 
-    @RequestMapping(value = "/conversation", method = RequestMethod.GET)
-    public ModelAndView conversation() throws Exception {
+    @RequestMapping(value = "/product", method = RequestMethod.GET)
+    public ModelAndView product() throws Exception {
         ModelAndView response= new ModelAndView();
-        response.setViewName("conversation");
+
+        List<Product> products = productDao.findAll();
+
+        Comparator<Product> compareByName = (Product p1, Product p2) -> p1.getName().compareTo(p2.getName());
+        Collections.sort(products, compareByName);
+
+        response.addObject("products", products);
+
+        response.setViewName("product");
         return response;
     }
 
 
-    @RequestMapping(value = "/conversation/conversationSubmit", method = RequestMethod.GET)
-    public ModelAndView submit(@Valid ConversationFormBean form, BindingResult bindingResult) throws Exception {
+    @RequestMapping(value = "/product/productSubmit", method = RequestMethod.GET)
+    public ModelAndView submit(@Valid ProductFormBean form, BindingResult bindingResult) throws Exception {
         ModelAndView response= new ModelAndView();
-        response.setViewName("conversation");
+        response.setViewName("redirect:/product");
 
         log.debug(form.toString());
 
@@ -68,18 +80,35 @@ public class ConversationController {
     }
 
 
-    @RequestMapping(value = "/conversation/delete/{id}", method = RequestMethod.GET)
-    public ModelAndView delete(@PathParam("id") Integer id) throws Exception {
+    @RequestMapping(value = "/product/delete", method = RequestMethod.GET)
+    public ModelAndView delete(@RequestParam(name = "productId") Integer id) throws Exception {
+        log.info(product().toString());
         ModelAndView response= new ModelAndView();
-        response.setViewName("conversation");
+        log.info(product().toString());
+        response.setViewName("redirect:/product");
+        log.info(product().toString());
 
         Product p = productDao.findById(id);
         if ( p == null ) {
+            log.info(product().toString());
             // this is an error
         } else {
+            log.info(product().toString());
             productDao.delete(p);
         }
+        log.info(product().toString());
+        return response;
+    }
 
+
+    @RequestMapping(value = "/showAll", method = RequestMethod.GET)
+    public ModelAndView showAll() throws Exception{
+        ModelAndView response = new ModelAndView();
+        response.setViewName("viewproducts");
+
+        List<Product> productsKey = productDao.findAll();
+
+        response.addObject("productsKey", productsKey);
         return response;
     }
 
