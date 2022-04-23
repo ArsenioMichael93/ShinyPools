@@ -20,8 +20,5 @@ public interface OrderProductDAO extends JpaRepository<OrderProduct, Long> {
             nativeQuery = true)
     List<Map<String,Object>> getProductNameAndOderCount();
 
-    // in your JSP you can do a for each
-    // for each orderProduct var=op
-    // ${op.cnt}   ${op.product_id} ${op.name}
-    // end for each
+
 }

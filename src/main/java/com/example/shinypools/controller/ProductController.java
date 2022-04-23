@@ -58,11 +58,12 @@ public class ProductController {
             // add the errors to the model to be displayed on the page
             response.addObject("bindingResult", bindingResult);
 
-            // add the form bean back to the model so I can fill the form with the user input
+            // add the form bean back to the model
+            // fill the form with the user input
             response.addObject("form", form);
         } else {
-            // this is the success case
-            // we are going to save the product to the database
+
+            //  the product to the database
 
             Product product = new Product();
 
@@ -82,21 +83,14 @@ public class ProductController {
 
     @RequestMapping(value = "/product/delete", method = RequestMethod.GET)
     public ModelAndView delete(@RequestParam(name = "productId") Integer id) throws Exception {
-        log.info(product().toString());
         ModelAndView response= new ModelAndView();
-        log.info(product().toString());
         response.setViewName("redirect:/product");
-        log.info(product().toString());
-
         Product p = productDao.findById(id);
         if ( p == null ) {
-            log.info(product().toString());
             // this is an error
         } else {
-            log.info(product().toString());
             productDao.delete(p);
         }
-        log.info(product().toString());
         return response;
     }
 
@@ -107,6 +101,8 @@ public class ProductController {
         response.setViewName("viewproducts");
 
         List<Product> productsKey = productDao.findAll();
+        Comparator<Product> compareByName = (Product p1, Product p2) -> p1.getName().compareTo(p2.getName());
+        Collections.sort(productsKey, compareByName);
 
         response.addObject("productsKey", productsKey);
         return response;

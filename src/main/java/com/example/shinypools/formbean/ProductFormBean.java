@@ -19,7 +19,6 @@ public class ProductFormBean {
     @NotEmpty(message="blah")
     private String imageURL;
 
-    // do a few more annotations for error checking
     private Double price;
 
 }

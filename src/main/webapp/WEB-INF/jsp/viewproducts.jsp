@@ -16,9 +16,10 @@
                     <th>Price</th>
                     <th>Description</th>
                 </tr>
-                <c:forEach
-                        items="${productsKey}" var="product">
+                <c:forEach items="${productsKey}" var="product">
+                    <option value="${product.id}"></option>
                     <tr scope="row">
+
                         <td><img src="../../../pub/img/${product.imageUrl}" style="height: 100px; width: 100px;"
                                  alt=""></td>
                         <td>${product.name}</td>
@@ -31,3 +32,5 @@
         </div>
     </div>
 </div>
+
+<jsp:include page="include/footer.jsp" />

@@ -11,7 +11,5 @@ public class UserService {
     @Autowired
     private UserDAO userDao;
 
-    // if you have some more complex logic then you can move it into
-    // this class and run it from the controller
 
 }

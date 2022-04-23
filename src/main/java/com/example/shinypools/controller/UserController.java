@@ -20,14 +20,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import javax.validation.Valid;
+import javax.websocket.server.PathParam;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Slf4j
 @Controller
-//@PreAuthorize("hasAuthority('USER')")
-//@PreAuthorize("hasAnyAuthority('USER','ADMIN')")
 public class UserController {
 
     @Autowired
@@ -43,47 +42,19 @@ public class UserController {
     private PasswordEncoder passwordEncoder;
 
 
-    // this is on the master branch
-    // this is some comments that will be checked in on the example branch
-    // lets do one more change and commit.
-
-
-    /**
-     * this is the controller method for the entry point of the
-     * user registration page.   It does not do anything really
-     * other than provide a route to the register.jsp page
-     * <p>
-     * This method is the entry point for the create user - it sets up the empty form
-     */
     @RequestMapping(value = "/user/register", method = RequestMethod.GET)
     public ModelAndView create() throws Exception {
         ModelAndView response = new ModelAndView();
         response.setViewName("user/register");
 
-        // all these 2 lines of code are doing is seeding the model with an
-        // empty form bean so that the JSP page substitutions will not error out
-        // in this case spring is being nice enough not to throw errors but these
-        // 2 lines are safety.
         RegisterFormBean form = new RegisterFormBean();
         response.addObject("form", form);
 
         return response;
     }
 
-    /**
-     * when the user submits the form it will call into this method
-     * 1) the action on the form itself must match the value here in the request mapping
-     * 2) method on the form must match the method here
-     * otherwise spring MVC will not be able to respond to the request
-     * <p>
-     * In this case the @PostMapping and @RequestMapping are the same with the @PostMapping
-     * being a sharthand.   This works the same for @GetMapping
-     * <p>
-     * This method now becomes a create and an edit based on if the id is populated in
-     * the RegisterFormBean.
-     */
-    //@PostMapping( "/user/registerSubmit")
-    @RequestMapping(value = "/user/registerSubmit", method = { RequestMethod.POST, RequestMethod.GET})
+
+    @RequestMapping(value = "/user/registerSubmit", method = {RequestMethod.POST, RequestMethod.GET})
     public ModelAndView registerSubmit(@Valid RegisterFormBean form, BindingResult bindingResult) throws Exception {
         ModelAndView response = new ModelAndView();
 
@@ -92,30 +63,23 @@ public class UserController {
         if (bindingResult.hasErrors()) {
 
             for (ObjectError error : bindingResult.getAllErrors()) {
-                log.info( ((FieldError)error).getField() + " " +  error.getDefaultMessage());
+                log.info(((FieldError) error).getField() + " " + error.getDefaultMessage());
             }
-
-            // add the form back to the model so we can fill up the input fields
-            // so the user can correct the input and does not have type it all again
             response.addObject("form", form);
 
-            // add the error list to the model
+
             response.addObject("bindingResult", bindingResult);
 
-            // because there is 1 or more error we do not want to process the logic below
-            // that will create a new user in the database.   We want to show the register.jsp
             response.setViewName("user/register");
             return response;
         }
 
-        // we first assume that we are going to try to load the user from
-        // the database using the incoming id on the form
+
         User user = userDao.findById(form.getId());
 
-        // if the user is not null the know it is an edit
+
         if (user == null) {
-            // now, if the user from the database is null then it means we did not
-            // find this user.   Therefore, it is a create.
+
             user = new User();
         }
 
@@ -129,7 +93,7 @@ public class UserController {
 
         userDao.save(user);
 
-        // create and save the user role object
+
         UserRole userRole = new UserRole();
         userRole.setUserId(user.getId());
         userRole.setUserRole("USER");
@@ -138,26 +102,13 @@ public class UserController {
 
         log.info(form.toString());
 
-        // here instaed of showing a view, we want to redirect to the edit page
-        // the edit page will then be responsible for loading the user from the
-        // database and dynamically creating the page
-        // when you use redirect: as part of the view name it triggers spring to tell the
-        // browser to do a redirect to the URL after the :    The big piece here to
-        // recognize that redirect: uses an actual URL rather than a view name path.
         response.setViewName("redirect:/user/edit/" + user.getId());
 
         return response;
     }
 
-    /**
-     * This method is for editing a user. There is a path parameter being used
-     * to pass the userid for the user that is to be editied.
-     * <p>
-     * In this case the @GetMapping is equivlant to the @RequestMapping
-     */
-    //@RequestMapping(value = "/user/edit/{userId}", method = RequestMethod.GET)
+
     @GetMapping("/user/edit/{userId}")
-    //public ModelAndView editUser(@RequestParam("userId") Integer userId) throws Exception {
     public ModelAndView editUser(@PathVariable("userId") Integer userId) throws Exception {
         ModelAndView response = new ModelAndView();
         response.setViewName("user/register");
@@ -173,22 +124,14 @@ public class UserController {
         form.setPassword(user.getPassword());
         form.setConfirmPassword(user.getPassword());
 
-        // in this case we are adding the RegisterFormBean to the model
+
         response.addObject("form", form);
 
         return response;
     }
 
-    // create a form on the user search page that action submits to this route using a get method
-    // make an input box for the user to enter a search term for first name
-    // add a @RequestParam to take in a search value from the input box - use required = false in the annotation
-    // use the search value in the query
-    // add the search value to the model and make it display in the input box when the page reloads
-    // add error checking to make sure that the incoming search value is not null and is not empty.
-    // find apache string utils on maven central and add it to your pom file - very high recommendation
-    // research the StringUtils.isEmpty function and use for error checking
     @PreAuthorize("hasAuthority('ADMIN')")
-    @RequestMapping(value="/user/search", method= RequestMethod.GET )
+    @RequestMapping(value = "/user/search", method = RequestMethod.GET)
     public ModelAndView search(@RequestParam(value = "firstName", required = false) String firstName) {
         ModelAndView response = new ModelAndView();
         response.setViewName("user/search");
@@ -200,13 +143,33 @@ public class UserController {
             users = userDao.findByFirstNameIgnoreCaseContaining(firstName);
         }
 
-        // this line puts the list of users that we just queried into the model
-        // the model is a map ( key value store )
-        // any object of any kind can go into the model using this key value
-        // in this case it is a list of Users
         response.addObject("usersModelKey", users);
         response.addObject("firstName", firstName);
 
         return response;
     }
+
+
+    @RequestMapping(value = "/profile/{email}", method = RequestMethod.GET)
+    public ModelAndView profile(@PathVariable("email") String email)throws Exception {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("user/profile");
+
+        RegisterFormBean form = new RegisterFormBean();
+
+        //have their username
+        //query Users from mysql where username = username
+        //get the result and theres the name and such.
+
+        User user = userDao.findByEmail(email);
+
+        response.addObject("firstName", user.getFirstName());
+        response.addObject("lastName", user.getLastName());
+        response.addObject("role", UserRole.getuserRole();
+        response.addObject("lastName", user.getLastName());
+
+        return response;
+    }
+
+
 }

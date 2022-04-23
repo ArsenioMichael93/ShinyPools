@@ -1,4 +1,5 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +8,7 @@
     <meta charset="utf-8">
     <title>Sample Project</title>
 
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js"
             integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -55,7 +56,10 @@
                 <ul class="nav justify-content-center">
                     <li class="nav-item" style=" color: white" >
                         <sec:authorize access="isAuthenticated()">
-                            <sec:authentication property="principal.username"></sec:authentication>
+                            <c:set var="username">
+                                <sec:authentication property="principal.username"/>
+                            </c:set>
+                            <a href="/profile/${username}" style="color: white">${username}</a>
                         </sec:authorize>
                     </li>
                 </ul>
@@ -86,5 +90,3 @@
     </nav>
 </div>
 
-
-</body>

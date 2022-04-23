@@ -16,8 +16,7 @@ import javax.validation.constraints.Pattern;
 @ToString
 public class RegisterFormBean {
 
-    // this id will be null in the case of a create
-    // and will be populated with the user id in the case of an edit
+
     private Integer id;
 
     @EmailUnique(message = "Email already exists in database")
