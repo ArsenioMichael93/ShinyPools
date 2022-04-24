@@ -16,7 +16,7 @@ public class ProductFormBean {
 
     private String description;
 
-    @NotEmpty(message="blah")
+    @NotEmpty(message="type file name please and thank.")
     private String imageURL;
 
     private Double price;

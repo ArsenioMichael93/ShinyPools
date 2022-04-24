@@ -17,7 +17,9 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="../../../pub/css/style.css">
+    <link rel="stylesheet" href="../../../pub/css/style.css" />
+    <link rel="stylesheet" href="../../../pub/css/contact.css" />
+    <script src="../../../pub/js/contact.js"></script>
 
 </head>
 
@@ -34,13 +36,13 @@
             <div class="collapse navbar-collapse" id="mynavbar">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/ajax">AJAX Example</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="/services">Services</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/showAll">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contact</a>
                     </li>
                     <li class="nav-item">
                         <sec:authorize access="hasAuthority('ADMIN')">

@@ -67,6 +67,14 @@ public class IndexController {
         return response;
     }
 
+    @RequestMapping(value ="/contact")
+    public ModelAndView contact() throws Exception {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("user/contact");
+
+        return response;
+    }
+
 
 
 }

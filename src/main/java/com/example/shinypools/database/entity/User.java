@@ -36,10 +36,15 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private Set<Order> orders;
 
-
     @Column(name = "create_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDate = new Date();
+
+    @Column(name = "phone")
+    private String phone;
+
+    @Column(name = "address")
+    private String address;
 
 
 }

@@ -1,6 +1,10 @@
 <jsp:include page="include/header.jsp"/>
 <div class="container" style="align-self: center; background-color: white" id="mainbody">
     <div style="align-self: center; text-align: center;">
+        <img src="../../pub/img/logo.png" style="width: 100%; height: 225px">
+        <br>
+        <br>
+        <br>
         <h5>Are you or a loved one using your pool to achieve a
             weight loss goal? Is your pool the setting for your physical therapy journey?
             Could your pool also be the perfect setting for your kids to introduce you to their friends?
@@ -8,7 +12,7 @@
             Let Shiny Pools help you create all the stories and memories that your pool has to offer.</h5>
         <br>
 
-
+        <img src="../../pub/img/aboveGround1.png">
 
         <a class="nav-link" id="Hireustoday" href="#">Hire a pool professional today!</a>
         <br>
@@ -23,7 +27,10 @@
             joy a pool can bring to a family and all of their friends and loved ones. ShinyPools wants
             to be a part of your community by providing a service that leaves you saying "WOW".
         </h5>
+        <br>
+        <br>
 
+        <img src="../../pub/img/aboveGround2.png">
 
 
     </div>

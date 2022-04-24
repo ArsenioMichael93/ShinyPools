@@ -31,6 +31,18 @@
                     <div style="color:red;">${error.getDefaultMessage()}</div>
                 </c:forEach>
                 <br>
+                Address <input type="text"
+                                    name="confirmPassword" id="confirmPasswordId" placeholder="Password here...again"  value="${form.confirmPassword}">
+                <c:forEach items='${bindingResult.getFieldErrors("confirmPassword")}' var="error">
+                    <div style="color:red;">${error.getDefaultMessage()}</div>
+                </c:forEach>
+                <br>
+                Phone Number <input type="text"
+                                        name="confirmPassword" id="confirmPasswordId" placeholder="Password here...again"  value="${form.confirmPassword}">
+                <c:forEach items='${bindingResult.getFieldErrors("confirmPassword")}' var="error">
+                    <div style="color:red;">${error.getDefaultMessage()}</div>
+                </c:forEach>
+                <br>
                 Password <input type="text" name="password" id="passwordId" placeholder="Password here" value="${form.password}">
                 <c:forEach items='${bindingResult.getFieldErrors("password")}' var="error">
                     <div style="color:red;">${error.getDefaultMessage()}</div>

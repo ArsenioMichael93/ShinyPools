@@ -121,6 +121,8 @@ public class UserController {
         form.setEmail(user.getEmail());
         form.setFirstName(user.getFirstName());
         form.setLastName(user.getLastName());
+        form.setPhone(user.getPhone());
+        form.setAddress(user.getAddress());
         form.setPassword(user.getPassword());
         form.setConfirmPassword(user.getPassword());
 
@@ -129,6 +131,22 @@ public class UserController {
 
         return response;
     }
+
+    @GetMapping("/user/delete/{userId}")
+    public ModelAndView deleteUser(@PathVariable("userId") Integer userId) throws Exception {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("user/search");
+
+        User user = userDao.findById(userId);
+        if(user == null){
+            // Error message
+        } else {
+            userDao.delete(user);
+        }
+
+        return response;
+    }
+
 
     @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/user/search", method = RequestMethod.GET)
@@ -165,9 +183,10 @@ public class UserController {
 
         response.addObject("firstName", user.getFirstName());
         response.addObject("lastName", user.getLastName());
-        response.addObject("role", UserRole.getuserRole();
-        response.addObject("lastName", user.getLastName());
-
+        response.addObject("phone", user.getPhone());
+        response.addObject("address", user.getAddress());
+        response.addObject("email", user.getEmail());
+        /*        response.addObject("role", UserRole.getuserRole());*/
         return response;
     }
 

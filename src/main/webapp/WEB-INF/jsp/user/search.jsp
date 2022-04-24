@@ -25,14 +25,20 @@
                 <th>Email</th>
                 <th>First Name</th>
                 <th>Last Name</th>
+                <th>Address</th>
+                <th>Phone</th>
                 <th>Edit</th>
+                <th>Delete</th>
             </tr>
             <c:forEach items="${usersModelKey}" var="user">
                 <tr scope="row">
                     <td>${user.email}</td>
                     <td>${user.firstName}</td>
                     <td>${user.lastName}</td>
+                    <td>${user.address}</td>
+                    <td>${user.phone}</td>
                     <td><a href="/user/edit/${user.id}">Edit</a></td>
+                    <td><a href="/user/delete/${user.id}">Delete</a></td>
                 </tr>
             </c:forEach>
         </table>

@@ -5,7 +5,8 @@
 
 
 <div class="container" style="align-self: center; background-color: white" id="test">
-    <div>
+    <div id="notlimited">
+        <h1 id="poductheader"> Products We Use </h1>
         <div id="test4">
 
 
@@ -13,7 +14,6 @@
                 <tr>
                     <th>Image</th>
                     <th>Name</th>
-                    <th>Price</th>
                     <th>Description</th>
                 </tr>
                 <c:forEach items="${productsKey}" var="product">
@@ -23,7 +23,6 @@
                         <td><img src="../../../pub/img/${product.imageUrl}" style="height: 100px; width: 100px;"
                                  alt=""></td>
                         <td>${product.name}</td>
-                        <td>${product.price}</td>
                         <td>${product.description}</td>
                         <%--<td><a href="/AddCart/${product.id}">Add to Cart</a></td>--%>
                     </tr>
