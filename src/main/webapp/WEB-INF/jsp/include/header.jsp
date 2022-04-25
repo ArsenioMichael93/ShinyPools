@@ -44,11 +44,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/contact">Contact</a>
                     </li>
+<%--
+                    Feature to be added to new tabel called receipts
+
                     <li class="nav-item">
                         <sec:authorize access="hasAuthority('ADMIN')">
-                            <a class="nav-link" href="/upload">Upload Example</a>
+                            <a class="nav-link" href="/upload">Upload Receipts</a>
                         </sec:authorize>
                     </li>
+
+                    --%>
                     <li class="nav-item">
                         <sec:authorize access="hasAuthority('ADMIN')">
                             <a class="nav-link" href="/product">Update Products</a>

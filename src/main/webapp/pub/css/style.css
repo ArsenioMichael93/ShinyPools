@@ -4,6 +4,7 @@ body{
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+
 }
 #mainbody{
     height:auto;
@@ -15,20 +16,18 @@ body{
 #test{
     height: auto;
     margin-top: 50px;
-    background: url("../img/poolBackground.jpg");
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    justify-self: center;
-    align-self: center;
-    font-weight: bolder;
+
+    background: inherit;
+    backdrop-filter: blur(8px);
 }
 #test2 {
-    padding-bottom: 100px;
-    padding-left: 550px;
+    padding-bottom: 130px;
+    padding-left: 420px;
     padding-right: 12px;
-    padding-top: 250px;
+    padding-top: 150px;
+    box-shadow: 0 0 5px 0 ;
+    background: inherit;
+    backdrop-filter: blur(8px);
 
 }
 #test3 {
@@ -36,22 +35,34 @@ body{
     padding-left: 250px;
     padding-right: 12px;
     padding-top: 250px;
+    box-shadow: 0 0 5px 0 ;
+    background: inherit;
+    backdrop-filter: blur(8px);
 
 }
 #test4 {
-    padding-bottom: 50px;
-    padding-left: 550px;
-    padding-right: 12px;
-    padding-top: -700px;
+
+    box-shadow: 0 0 5px 0 ;
+    background: inherit;
+    backdrop-filter: blur(8px);
 
 }
+
+#newfrost{
+    box-shadow: 0 0 5px 0 ;
+    background: inherit;
+    backdrop-filter: blur(8px);
+
+}
+
 #poductheader {
      text-align: center;
  }
+
 #footer{
     text-align: center;
     font-size: x-large;
-    margin-top: 50px;
+    margin-top: 0px;
 
 }
 #facebookimg{
@@ -60,6 +71,12 @@ body{
     border-radius: 50%;
 }
 /*--------------------------------------------------------------*/
+
+.push{
+    margin:20px
+}
+
+
 .footer-dark {
     padding:50px 0;
     color:#f0f9ff;

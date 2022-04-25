@@ -5,9 +5,9 @@
 
 <section id="contact">
 
-    <h1 class="section-header">Contact</h1>
 
-    <div class="contact-wrapper">
+
+    <div class="contact-wrapper" id="newfrost" style="margin-top: 50px">
 
         <!-- Left contact page -->
 

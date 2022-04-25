@@ -4,11 +4,10 @@
 <jsp:include page="include/header.jsp"/>
 
 
-<div class="container" style="align-self: center; background-color: white" id="test">
+<div class="container" id="test">
     <div id="notlimited">
-        <h1 id="poductheader"> Products We Use </h1>
         <div id="test4">
-
+            <h1 id="poductheader"> Products We Use </h1>
 
             <table class="table">
                 <tr>

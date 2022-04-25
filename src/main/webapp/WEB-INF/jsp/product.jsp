@@ -26,22 +26,33 @@
                     <h1>Product Add</h1>
 
                     <form action="/product/productSubmit" method="get">
+                        <table>
+                            <tr>
+                                <td align="right" style="text-align: left"> Name :</td>
+                                <td align="left"><input type="text" name="productName" value="${form.productName}"></td>
+                            </tr>
+                            <tr>
+                                <td align="right" style="text-align: left">Description :</td>
+                                <td align="left"><input type="text" name="description" value="${form.description}"></td>
 
-                        Name : <input type="text" name="productName" value="${form.productName}">
+                            <tr>
+                                <td align="right" style="text-align: left">Image URL :</td>
+                                <td align="left"><input type="text" name="imageURL" value="${form.imageURL}"></td>
+                            </tr>
+                            <tr>
+                                <td align="right" style="text-align: left">Price :</td>
+                                <td align="left"><input type="text" name="price" value="${form.price}"><button type="submit">Submit</button></td>
+                            </tr>
 
-                        <br>
-                        Description : <input type="text" name="description" value="${form.description}">
-                        <br>
-                        Image URL : <input type="text" name="imageURL" value="${form.imageURL}">
-                        <br>
-                        Price : <input type="text" name="price" value="${form.price}">
-
-                        <button type="submit">Submit</button>
+                        </table>
                     </form>
                 </div>
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     <form action="/product/delete" method="GET">
+                        <br>
+                        <br>
                         Product To Delete :
+
                         <select name="productId" id="productId">
                             <c:forEach items="${products}" var="product">
                                 <option value="${product.id}">${product.name}</option>

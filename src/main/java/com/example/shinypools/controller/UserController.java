@@ -20,7 +20,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import javax.validation.Valid;
-import javax.websocket.server.PathParam;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -148,6 +147,7 @@ public class UserController {
     }
 
 
+
     @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/user/search", method = RequestMethod.GET)
     public ModelAndView search(@RequestParam(value = "firstName", required = false) String firstName) {
@@ -175,9 +175,6 @@ public class UserController {
 
         RegisterFormBean form = new RegisterFormBean();
 
-        //have their username
-        //query Users from mysql where username = username
-        //get the result and theres the name and such.
 
         User user = userDao.findByEmail(email);
 

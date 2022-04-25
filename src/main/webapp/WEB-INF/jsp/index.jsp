@@ -1,6 +1,7 @@
 <jsp:include page="include/header.jsp"/>
-<div class="container" style="align-self: center; background-color: white" id="mainbody">
-    <div style="align-self: center; text-align: center;">
+<div class="container" style="align-self: center; background-color: white" id="test">
+    <div style="text-align: center">
+        <div id="test4">
         <img src="../../pub/img/logo.png" style="width: 100%; height: 225px">
         <br>
         <br>
@@ -32,8 +33,14 @@
 
         <img src="../../pub/img/aboveGround2.png">
 
+        <br>
+        <br>
+        <br>
+        <br>
+
 
     </div>
+</div>
 </div>
 
 
