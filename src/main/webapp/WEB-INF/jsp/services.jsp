@@ -8,7 +8,7 @@
             <h1 style="text-align: center">Openings</h1>
             <br><br>
 
-            <h4>Your pool opening can set the standard for your summer fun! The last thing
+            <h4 style="margin-left: 10px; margin-right: 10px;">Your pool opening can set the standard for your summer fun! The last thing
                 anyone wants to do is spend their spring battling their green pool.
                 Allow Shiny Pools to bring the solution to your pool and busy life. We don't
                 even require that you be at home. All we need is access to an outdoor source of water
@@ -18,7 +18,7 @@
             <br>
 
 
-            <table class="table table-striped table-hover table-info" style="left: auto !IMPORTANT">
+            <table class="table table-hover " style="left: auto !IMPORTANT; font-weight: bolder">
                 <tr>
                     <th>Name</th>
                     <th>Description</th>
@@ -32,7 +32,7 @@
                 </c:forEach>
             </table>
         </div>
-
+    </div>
 </div>
 
 

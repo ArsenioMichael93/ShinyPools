@@ -105,6 +105,30 @@
                             <div class="card-body">
                                 <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Services</i>Ordered</h6>
                                 <small style="color: #aaaaaa">No service orders at the moment</small>
+                                <br>
+                                <!DOCTYPE html>
+                                <html>
+                                <body>
+
+                                <div id="demo">
+                                    <h2>Click here for a mini profile while you wait for an update</h2>
+                                    <button type="button" onclick="loadDoc()">Change Content</button>
+                                </div>
+
+                                <script>
+                                    function loadDoc() {
+                                        const xhttp = new XMLHttpRequest();
+                                        xhttp.onload = function() {
+                                            document.getElementById("demo").innerHTML =
+                                                this.responseText;
+                                        }
+                                        xhttp.open("GET", "${email}");
+                                        xhttp.send();
+                                    }
+                                </script>
+
+                                </body>
+                                </html>
                             </div>
                         </div>
                     </div>
@@ -113,7 +137,21 @@
                             <div class="card-body">
                                 <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Service</i>Notes</h6>
                                 <small style="color: #aaaaaa">No service notes at the moment</small>
-
+                                <br>
+                                <small>Here is a radio button to play with :)
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                        <label class="form-check-label" for="exampleRadios1">
+                                            Isn't this great or?
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                        <label class="form-check-label" for="exampleRadios2">
+                                            Fun?
+                                        </label>
+                                    </div>
+                                </small>
                             </div>
                         </div>
                     </div>

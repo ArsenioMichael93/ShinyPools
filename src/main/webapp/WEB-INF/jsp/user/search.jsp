@@ -32,7 +32,7 @@
                     <th>Delete</th>
                 </tr>
                 <c:forEach items="${usersModelKey}" var="user">
-                    <tr scope="row">
+                    <tr scope="row" style="font-weight: bold">
                         <td>${user.email}</td>
                         <td>${user.firstName}</td>
                         <td>${user.lastName}</td>

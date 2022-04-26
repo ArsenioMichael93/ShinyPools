@@ -16,7 +16,7 @@
             <form action="/user/registerSubmit" method="get">
                 <input type="hidden" name="id" value="${form.id}">
 
-                <table>
+                <table >
                     <tr>
                         <td align="right" style="text-align: left"> Email</td>
                         <td align="left"><input type="text" name="email" id="emailId" placeholder="Email@email.com"
@@ -44,20 +44,20 @@
                     <tr>
                         <td align="right" style="text-align: left">Address</td>
                         <td align="left"><input type="text"
-                                                name="confirmPassword" id="confirmPasswordId"
-                                                placeholder="Password here...again"
-                                                value="${form.confirmPassword}">
-                            <c:forEach items='${bindingResult.getFieldErrors("confirmPassword")}' var="error">
+                                                name="address" id="address"
+                                                placeholder="123 street, Norwood NJ"
+                                                value="${form.address}">
+                            <c:forEach items='${bindingResult.getFieldErrors("address")}' var="error">
                                 <div style="color:red;">${error.getDefaultMessage()}</div>
                             </c:forEach></td>
                     </tr>
                     <tr>
                         <td align="right" style="text-align: left">Phone Number</td>
                         <td align="left"><input type="text"
-                                                name="confirmPassword" id="confirmPasswordId"
-                                                placeholder="Password here...again"
-                                                value="${form.confirmPassword}">
-                            <c:forEach items='${bindingResult.getFieldErrors("confirmPassword")}' var="error">
+                                                name="phone" id="phone"
+                                                placeholder="Mobile/Home Phone"
+                                                value="${form.phone}">
+                            <c:forEach items='${bindingResult.getFieldErrors("phone")}' var="error">
                                 <div style="color:red;">${error.getDefaultMessage()}</div>
                             </c:forEach></td>
                     </tr>

@@ -188,4 +188,22 @@ public class UserController {
     }
 
 
+    @RequestMapping(value = "/profile/profile", method = RequestMethod.GET)
+    public ModelAndView mini(@PathVariable("email") String email)throws Exception {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("profile/profile");
+
+        RegisterFormBean form = new RegisterFormBean();
+
+
+        User user = userDao.findByEmail(email);
+
+        response.addObject("firstName", user.getFirstName());
+        response.addObject("lastName", user.getLastName());
+        response.addObject("phone", user.getPhone());
+        response.addObject("address", user.getAddress());
+        response.addObject("email", user.getEmail());
+        /*        response.addObject("role", UserRole.getuserRole());*/
+        return response;
+    }
 }

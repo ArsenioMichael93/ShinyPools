@@ -9,7 +9,7 @@
         <div id="test4">
             <h1 id="poductheader"> Products We Use </h1>
 
-            <table class="table">
+            <table class="table" style="font-weight: bolder">
                 <tr>
                     <th>Image</th>
                     <th>Name</th>
