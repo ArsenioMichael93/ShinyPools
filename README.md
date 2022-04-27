@@ -1,5 +1,8 @@
 <h1> Shiny Pool </h1>
 <h3>What is this application about?</h3>
+<h5> This is a application used for a pool company call shiny pools. In this application you can see what the company offers as far as pool chemicals and services for the season opening.
+Chemicals can be added or removed based on the owners/admins will. As well as simple user authentication and user manipulation.  </h5>
+<h1> How it came to be  </h1>
 <h5>Shiny Pool is a web application that I have designed for a lifelong friend Daniel Kern who just started a pool maintenance company this year.
 Shiny pools Web Application will be the first installment of building this business. </h5>
 
